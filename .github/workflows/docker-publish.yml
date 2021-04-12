@@ -3,7 +3,7 @@ name: publish
 on: [push]
 
 jobs:
-  publish-hello-world-image:
+  publish-mongodb-ci-connector:
     runs-on: ubuntu-latest
 
     steps:
@@ -11,10 +11,10 @@ jobs:
 
     - name: Build the hello-world Docker image
       run: |
-        echo $CR_PAT | docker login ghcr.io -u jonashackt --password-stdin
-        docker build . --tag ghcr.io/jonashackt/hello-world:latest
-        docker run ghcr.io/jonashackt/hello-world:latest
-        docker push ghcr.io/jonashackt/hello-world:latest
+        echo $CR_PAT | docker login ghcr.io -u phlaxyz --password-stdin
+        docker build . --tag ghcr.io/phlaxyz/mongodb-bi-connector-docker:latest
+        docker run ghcr.io/phlaxyz/mongodb-bi-connector-docker:latest
+        docker push ghcr.io/phlaxyz/mongodb-bi-connector-docker:latest
       env:
         CR_PAT: ${{ secrets.CR_PAT }}
 
