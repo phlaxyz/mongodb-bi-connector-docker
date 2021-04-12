@@ -11,7 +11,7 @@ RUN curl https://info-mongodb-com.s3.amazonaws.com/mongodb-bi/v2/mongodb-bi-linu
     mv /tmp/mongodb-bi-linux-x86_64-debian92-v2.12.0 /mongosqld
 
 # Setup default environment variables
-ENV MONGO_URL mongodb://localhost:27017/?connect=direct
+ENV MONGO_URL mongodb://mongodb:27017/?connect=direct
 ENV LISTEN_PORT 3307
 
 # Start Everything
