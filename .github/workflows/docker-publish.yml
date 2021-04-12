@@ -13,7 +13,6 @@ jobs:
       run: |
         echo $CR_PAT | docker login ghcr.io -u phlaxyz --password-stdin
         docker build . --tag ghcr.io/phlaxyz/mongodb-bi-connector-docker:latest
-        docker run ghcr.io/phlaxyz/mongodb-bi-connector-docker:latest
         docker push ghcr.io/phlaxyz/mongodb-bi-connector-docker:latest
       env:
         CR_PAT: ${{ secrets.CR_PAT }}
