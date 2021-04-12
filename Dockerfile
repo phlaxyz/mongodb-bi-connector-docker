@@ -22,4 +22,4 @@ ENV MONGO_SCHEMAMODE auto
 # note: we need to use sh -c "command" to make rsyslog running as deamon too
 RUN service rsyslog start
 
-CMD sh -c "/mongosqld/bin/mongosqld --mongo-uri '$MONGO_URL' --auth -u $MONGO_USER -p $MONGO_PASSWD --schemaSource $MONGO_SCHEMA --schemaMode $MONGO_SCHEMAMODE --addr 0.0.0.0:$LISTEN_PORT"
+CMD sh -c "/mongosqld/bin/mongosqld --logPath /var/log/mongosqld.log --mongo-uri '$MONGO_URL' --auth -u $MONGO_USER -p $MONGO_PASSWD --schemaSource $MONGO_SCHEMA --schemaMode $MONGO_SCHEMAMODE --addr 0.0.0.0:$LISTEN_PORT"
