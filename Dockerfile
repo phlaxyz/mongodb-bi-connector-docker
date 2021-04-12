@@ -16,9 +16,10 @@ ENV LISTEN_PORT 3307
 ENV MONGO_USER admin
 ENV MONGO_PASSWD secret
 ENV MONGO_SCHEMA sampleDb
+ENV MONGO_SCHEMAMODE auto
 
 # Start Everything
 # note: we need to use sh -c "command" to make rsyslog running as deamon too
 RUN service rsyslog start
 
-CMD sh -c "/mongosqld/bin/mongosqld --mongo-uri '$MONGO_URL' --auth -u $MONGO_USER -p $MONGO_PASSWD --schemaSource $MONGO_SCHEMA --schemaMode auto --addr 0.0.0.0:$LISTEN_PORT"
+CMD sh -c "/mongosqld/bin/mongosqld --mongo-uri '$MONGO_URL' --auth -u $MONGO_USER -p $MONGO_PASSWD --schemaSource $MONGO_SCHEMA --schemaMode $MONGO_SCHEMAMODE --addr 0.0.0.0:$LISTEN_PORT"
