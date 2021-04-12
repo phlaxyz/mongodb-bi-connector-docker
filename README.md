@@ -14,6 +14,6 @@ services:
   mongodb-bi-connector:
     image: ryanhs/mongodb-bi-connector:latest
     environment:
-      MONGO_URL: mongodb://localhost:27017/?connect=direct
+      MONGO_URL: mongodb://mongodb:27017/?connect=direct
     
 ```
