@@ -13,8 +13,10 @@ RUN curl https://info-mongodb-com.s3.amazonaws.com/mongodb-bi/v2/mongodb-bi-linu
 # Setup default environment variables
 ENV MONGO_URL mongodb://mongodb:27017/?connect=direct
 ENV LISTEN_PORT 3307
+ENV MONGO_USER admin
+ENV MONGO_PASSWD secret
 
 # Start Everything
 # note: we need to use sh -c "command" to make rsyslog running as deamon too
 RUN service rsyslog start
-CMD sh -c "/mongosqld/bin/mongosqld --logPath /var/log/mongosqld.log --mongo-uri $MONGO_URL --addr 0.0.0.0:$LISTEN_PORT"
+CMD sh -c "/mongosqld/bin/mongosqld --logPath /var/log/mongosqld.log --mongo-uri $MONGO_URL --auth -u $MONGO_USER -p $MONGO_PASSWD --addr 0.0.0.0:$LISTEN_PORT"
